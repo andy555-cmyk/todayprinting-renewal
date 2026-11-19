@@ -23,3 +23,15 @@ gnb.querySelectorAll(':scope>li').forEach(li=>{
 });
 
 if(new URLSearchParams(location.search).get('motion')==='off') document.documentElement.classList.add('motion-off');
+
+/* 휴대폰 전체 메뉴 */
+(()=>{const btn=document.querySelector('.menu-btn');if(!btn)return;
+const d=document.createElement('div');d.className='drawer';d.setAttribute('aria-hidden','true');
+d.innerHTML=`<div class="dim"></div><nav class="panel" aria-label="전체 메뉴"><div class="dh"><b>전체 메뉴</b><button type="button" aria-label="메뉴 닫기">×</button></div>
+<div class="quick"><a href="#">로그인</a><a href="#">원고 올리기</a><a href="#">교정 보기</a><a href="#">견적 문의</a></div>
+${MENU.map(m=>`<details><summary>${m.name}</summary><ul>${m.items.map(t=>`<li><a href="${t.startsWith('책자 자동')?'detail.html':'#'}">${t}</a></li>`).join('')}</ul></details>`).join('')}
+<p class="tel">견적 상담<b>02&#8209;2275&#8209;8822</b></p></nav>`;
+document.body.appendChild(d);
+const open=v=>{d.classList.toggle('on',v);d.setAttribute('aria-hidden',!v);document.body.style.overflow=v?'hidden':'';if(v)d.querySelector('.dh button').focus();else btn.focus()};
+btn.addEventListener('click',()=>open(true));d.querySelector('.dim').onclick=()=>open(false);d.querySelector('.dh button').onclick=()=>open(false);
+addEventListener('keydown',e=>{if(e.key==='Escape'&&d.classList.contains('on'))open(false)});})();
