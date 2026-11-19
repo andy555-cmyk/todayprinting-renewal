@@ -7,6 +7,7 @@
 <title>투데이프린팅 메인 시안</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
@@ -21,7 +22,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#" aria-label="투데이프린팅 처음으로">
+    <a class="logo" href="index.html" aria-label="투데이프린팅 처음으로">
       <svg width="40" height="30" viewBox="0 0 40 30" aria-hidden="true">
         <g transform="skewX(-28)">
           <rect x="16" y="0" width="22" height="6" rx="1.5" fill="#14161a"/>
@@ -42,20 +43,105 @@
 </header>
 
 <main>
-<section class="hero" style="padding:0">
-  <div class="bg"><img src="img/hero.jpg" alt="" fetchpriority="high" width="1254" height="1254"></div>
+<!-- ① 큰 배너 + 오른쪽 홍보 4칸 (옛 홈페이지 첫 화면 구성을 그대로 살림) -->
+<section class="slider-sec">
+  <div class="wrap slider" id="slider">
+    <div class="stage" aria-roledescription="carousel" aria-label="이달의 안내">
+      <article class="slide on" data-i="0">
+        <img src="img/s_namecard.jpg" alt="" width="1600" height="900" fetchpriority="high">
+        <div class="copy"><span class="kk"><span class="cmyk"><i></i><i></i><i></i><i></i></span>명함</span>
+          <h2>한 장에 담는<br>첫인상</h2>
+          <p>일반명함부터 수입지·카드명함까지 <br>고르면 가격이 바로 나와요</p>
+          <a class="btn solid" href="product.html?c=namecard">명함 주문하기</a></div>
+      </article>
+      <article class="slide" data-i="1">
+        <img src="img/s_booklet.jpg" alt="" width="1600" height="900" loading="lazy">
+        <div class="copy"><span class="kk"><span class="cmyk"><i></i><i></i><i></i><i></i></span>책자 인쇄</span>
+          <h2>교재·책자도<br>자동 견적으로</h2>
+          <p>표지·내지·제본만 고르면 금액이 나오고 <br>상담부터 디자인·인쇄·납품까지 한 번에</p>
+          <a class="btn solid" href="detail.html">책자 견적 보기</a></div>
+      </article>
+      <article class="slide" data-i="2">
+        <img src="img/s_catalog.jpg" alt="" width="1600" height="900" loading="lazy">
+        <div class="copy"><span class="kk"><span class="cmyk"><i></i><i></i><i></i><i></i></span>카다로그·리플렛·브로셔</span>
+          <h2>회사의 얼굴을<br>선명하게</h2>
+          <p>회사·제품 소개에 맞는 판형과 접지를 <br>골라 바로 주문하세요</p>
+          <a class="btn solid" href="product.html?c=catalog">카다로그 보기</a></div>
+      </article>
+      <article class="slide" data-i="3">
+        <img src="img/s_delivery.jpg" alt="" width="1600" height="900" loading="lazy">
+        <div class="copy"><span class="kk"><span class="cmyk"><i></i><i></i><i></i><i></i></span>무료 배송</span>
+          <h2>무료 배송<br>하고 있어요</h2>
+          <p>명함 5만 원 이상 · 일반전단 50만 원 이상 <br>주문하면 배송비가 없어요</p>
+          <a class="btn solid" href="#">배송 안내</a></div>
+      </article>
+      <button class="pause" type="button" id="sPause" aria-label="자동 넘김 멈추기"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
+    </div>
+    <div class="snav" role="tablist" aria-label="안내 고르기">
+      <button role="tab" aria-selected="true" data-i="0"><b>명함</b><span>한 장에 귀하의 모든 것을</span><i class="bar"></i></button>
+      <button role="tab" aria-selected="false" data-i="1"><b>책자 인쇄</b><span>상담부터 납품까지 한 번에</span><i class="bar"></i></button>
+      <button role="tab" aria-selected="false" data-i="2"><b>카다로그·리플렛</b><span>브로셔·팜플렛까지</span><i class="bar"></i></button>
+      <button role="tab" aria-selected="false" data-i="3"><b>무료 배송</b><span>명함 5만 원 이상</span><i class="bar"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ② 검색 -->
+<section class="search-sec">
   <div class="wrap">
-    <div class="copy">
-      <div class="kicker"><span class="cmyk"><i></i><i></i><i></i><i></i></span>충무로 인쇄 골목 온라인 인쇄소</div>
-      <h1>고르면 바로 나오는<br><em>인쇄 견적</em></h1>
-      <p class="lead">규격·용지·수량만 고르면 가격이 바로 나오고<br>파일 올리기부터 카드 결제까지 한 화면에서 끝납니다</p>
-      <div class="quick">
-        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>원고 올리기</a>
-        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v12H4zM9 21h6"/><path d="M8 11l2.5 2.5L16 8"/></svg>교정 보기</a>
-        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v14H8l-4 3z"/></svg>별도 견적 문의</a>
+    <form class="search" id="search" role="search">
+      <label for="q">즐거운 오늘, 투데이프린팅</label>
+      <div class="box"><input id="q" placeholder="찾는 인쇄물을 써 보세요" autocomplete="off"><button type="submit" aria-label="찾기"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button></div>
+      <div class="pop"><span>많이 찾는</span><a href="product.html?c=namecard">명함</a><a href="product.html?c=flyer">전단지</a><a href="detail.html">책자</a><a href="product.html?c=postit">포스트잇</a></div>
+      <p class="miss" id="miss" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ③ 품목 16가지 -->
+<section class="cats-sec" aria-labelledby="catsT">
+  <div class="wrap">
+    <h2 class="vh" id="catsT">인쇄 품목</h2>
+    <ul class="cats" id="cats"></ul>
+  </div>
+</section>
+
+<!-- ④ 바로 가기 + 특이한 명함·브로셔 -->
+<section class="svc-sec">
+  <div class="wrap svc">
+    <div class="svc-l">
+      <a class="s1" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/></svg><b>재주문</b><span>지난 주문 다시 하기</span></a>
+      <a class="s2" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l7-7M14 4l6 6-8 8-6-6z"/></svg><b>후가공 보기</b><span>코팅·박·형압</span></a>
+      <a class="s3" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h12l4 4v8H4z"/><path d="M16 6v4h4"/></svg><b>용지 재질 보기</b><span>만져 본 듯 비교</span></a>
+      <a class="s4" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16v4"/></svg><b>인쇄 색 차이</b><span>모니터와 다른 이유</span></a>
+      <div class="sample"><b>디자인 샘플 보기</b><nav><a href="#">카다로그</a><a href="#">브로셔</a><a href="#">팜플렛</a><a href="#">리플렛</a></nav></div>
+    </div>
+    <div class="svc-r">
+      <div class="head"><h2>특이한 명함·브로셔</h2><div class="arrows"><button type="button" id="cPrev" aria-label="앞으로"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" id="cNext" aria-label="뒤로"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+      <div class="car" id="car">
+        <a href="product.html?c=namecard&t=3"><span class="ph"><img src="img/namecard.jpg" alt="" loading="lazy"></span><b>카드명함</b><span>PVC 카드에 인쇄</span></a>
+        <a href="product.html?c=brochure&t=6"><span class="ph"><img src="img/leaflet.jpg" alt="" loading="lazy"></span><b>다이아몬드 브로셔</b><span>펼치면 마름모</span></a>
+        <a href="product.html?c=namecard&t=2"><span class="ph"><img src="img/s_namecard.jpg" alt="" loading="lazy"></span><b>수입지명함</b><span>질감 있는 수입 용지</span></a>
+        <a href="product.html?c=brochure&t=7"><span class="ph"><img src="img/s_catalog.jpg" alt="" loading="lazy"></span><b>6단 병풍</b><span>길게 펼쳐 보여 주기</span></a>
+        <a href="product.html?c=brochure&t=12"><span class="ph"><img src="img/booklet.jpg" alt="" loading="lazy"></span><b>스타 브로셔</b><span>별 모양으로 접기</span></a>
       </div>
     </div>
+  </div>
+</section>
 
+<!-- ⑤ 바로 견적 -->
+<section class="quick-sec">
+  <div class="wrap quick-wrap">
+    <div class="txt">
+      <div class="sec-head" style="text-align:left;margin:0 0 20px"><div class="lab">바로 견적</div><h2>가격이 궁금하면<br>여기서 바로 계산</h2></div>
+      <p>규격·용지·수량만 고르면 부가세까지 넣은 금액이 나와요<br>더 자세한 옵션은 품목 화면에서 고를 수 있어요</p>
+      <ul class="go">
+        <li><a href="product.html?c=namecard">명함 자세히<span>→</span></a></li>
+        <li><a href="product.html?c=flyer">전단지 자세히<span>→</span></a></li>
+        <li><a href="product.html?c=leaflet">리플렛 자세히<span>→</span></a></li>
+        <li><a href="detail.html">책자 자세히<span>→</span></a></li>
+      </ul>
+    </div>
     <div class="calc crop" id="calc" aria-labelledby="calcT">
       <span class="mk tl"></span><span class="mk tr"></span><span class="mk bl"></span><span class="mk br"></span>
       <div class="head"><h2 id="calcT">바로 견적</h2><span>부가세 포함</span></div>
@@ -72,98 +158,66 @@
         <button class="btn line" id="addCart">장바구니</button>
         <button class="btn solid" id="orderBtn">바로 주문하기</button>
       </div>
-      <a class="more-link" id="moreLink" href="detail.html" hidden>표지·내지·제본까지 자세히 고르기 →</a>
       <p class="note">시안용 임시 가격입니다 · 실제 단가표를 받으면 바뀝니다</p>
     </div>
   </div>
 </section>
 
-<section id="items">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="lab">인쇄 품목</div>
-      <h2>자주 찾는 인쇄물부터<br>바로 고르세요</h2>
-    </div>
-    <div class="bento">
-      <a class="tile t1" href="#"><img src="img/namecard.jpg" alt="" loading="lazy" width="1254" height="1254"><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span><div class="cap"><b>명함</b><span>일반·고급·수입지·카드 명함</span></div></a>
-      <a class="tile t2" href="#"><img src="img/leaflet.jpg" alt="" loading="lazy" width="1254" height="1254"><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span><div class="cap"><b>리플렛·브로셔</b><span>접지·병풍</span></div></a>
-      <a class="tile t3" href="detail.html"><img src="img/booklet.jpg" alt="" loading="lazy" width="1254" height="1254"><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span><div class="cap"><b>책자·교재</b><span>자동 견적 주문</span></div></a>
-      <a class="tile t4" href="#"><img src="img/note.jpg" alt="" loading="lazy" width="1254" height="1254"><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span><div class="cap"><b>노트·포스트잇</b><span>노트·수첩</span></div></a>
-      <a class="tile t5 plain" href="#"><div class="cap"><b>전단지·포스터</b><span style="color:var(--mute)">문어발·문고리</span></div><ul><li>A1 일반옵셋</li><li>A2 일반옵셋</li><li>2절</li><li>4절</li></ul></a>
-    </div>
-    <div class="more-cats">
-      <a href="#">카다로그</a><a href="#">봉투</a><a href="#">화일</a><a href="#">상장·상장케이스</a><a href="#">티슈</a><a href="#">쇼핑백·칼라박스</a><a href="#">학원 인쇄물</a>
-    </div>
-  </div>
-</section>
-
-<section class="steps-sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="lab">주문 순서</div>
-      <h2>네 단계면 인쇄가 시작됩니다</h2>
-    </div>
-    <div class="steps">
-      <div class="step"><div class="dot">1</div><h3>옵션 고르기</h3><p>규격·용지·수량을 고르면<br>가격이 바로 나와요</p></div>
-      <div class="step"><div class="dot">2</div><h3>파일 올리기</h3><p>주문할 때 바로 올리거나<br>나중에 원고 올리기로</p><a href="#">원고 올리기 →</a></div>
-      <div class="step"><div class="dot">3</div><h3>교정 확인</h3><p>작업한 시안을 보고<br>수정 요청이나 승인</p><a href="#">교정 보기 →</a></div>
-      <div class="step"><div class="dot">4</div><h3>인쇄·배송</h3><p>진행 상태를 주문 내역에서<br>바로 확인할 수 있어요</p></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap split">
-    <div class="photo"><img src="img/booklet.jpg" alt="" loading="lazy" width="1254" height="1254"></div>
-    <div class="txt">
-      <div class="sec-head" style="text-align:left;margin:0"><div class="lab">학원 인쇄물</div></div>
-      <h2>학원에서 쓰는 인쇄물<br>한곳에 모았습니다</h2>
-      <p>원장님이 매달 찾는 양식은 따로 고를 필요 없이 바로 주문하세요</p>
-      <div class="acad">
-        <a href="#">수강영수증<span>→</span></a><a href="#">학생관리기록부<span>→</span></a>
-        <a href="#">입학원서<span>→</span></a><a href="#">출제용지<span>→</span></a>
-        <a href="#">원고지<span>→</span></a><a href="#">상품권<span>→</span></a>
-        <a href="#">수강료봉투<span>→</span></a><a href="#">책받침<span>→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- ⑥ 실시간 진행 현황 -->
 <div class="live">
   <div class="wrap live-box">
     <div class="txt">
-      <div class="pulse"><i></i>실시간 주문 현황</div>
-      <h2>지금도 인쇄기가<br>돌아가고 있어요</h2>
+      <div class="pulse"><i></i>실시간 진행 현황</div>
+      <h2>정직을 우선으로<br>오늘도 찍고 있어요</h2>
       <p>내 주문이 어디쯤인지는 주문 내역에서 확인할 수 있어요</p>
     </div>
     <div class="ticker" aria-label="최근 주문 현황"><ul id="ticker"></ul></div>
   </div>
 </div>
 
-<section class="pano" style="padding:0">
-  <img src="img/press.jpg" alt="" width="1254" height="1254">
-  <div class="wrap">
-    <h2>서울 충무로 인쇄 골목<br>필동에 있는 인쇄소입니다</h2>
-    <p>인쇄소가 모인 골목 한가운데, 뉴동화빌딩 3층에서 주문을 받고 있어요</p>
-    <div class="facts">
-      <div><b>2016년</b><span>온라인 주문 시작</span></div>
-      <div><b>100가지 넘게</b><span>바로 주문하는 품목</span></div>
-      <div><b>충무로역</b><span>가까운 필동 골목</span></div>
+<!-- ⑦ 입금 계좌 · 고객센터 · 파일 업로드 · 안내 문서 -->
+<section class="desk-sec">
+  <div class="wrap desk">
+    <div class="d-bank">
+      <h3>입금 계좌</h3>
+      <p class="bank">KB국민은행</p>
+      <p class="acct">068801&#8209;04&#8209;340903</p>
+      <p class="own">예금주 이민종(투데이프린팅)</p>
+      <nav><a href="#">카드 결제</a><a href="#">카드 영수증</a><a href="#">현금영수증</a><a href="#">발주서 출력</a><a href="#">배송 조회</a></nav>
+    </div>
+    <div class="d-call">
+      <h3>무엇을 도와드릴까요</h3>
+      <a class="num" href="tel:0222758822">02&#8209;2275&#8209;8822</a>
+      <p>까다롭고 복잡한 책자·카다로그도 전화 주시면 맞는 방법을 찾아 드려요</p>
+      <div class="talk"><a href="#">카카오톡 상담</a><a href="#">네이버 톡톡</a></div>
+    </div>
+    <div class="d-file">
+      <h3>파일 업로드</h3>
+      <a href="#"><b>홈페이지에 올리기</b><span>주문할 때 바로, 또는 원고 올리기에서</span></a>
+      <a href="#"><b>웹하드에 올리기</b><span>아이디 today100</span><span>비밀번호는 전화로 알려 드려요</span></a>
+      <a href="mailto:100today@naver.com"><b>이메일로 보내기</b><span>100today@naver.com</span></a>
+    </div>
+    <div class="d-doc">
+      <h3>주문 전에 읽어 주세요</h3>
+      <a href="#">주문 시 확인 사항<span>→</span></a>
+      <a href="#">작업 시 유의 사항<span>→</span></a>
+      <a href="#">작업 사이즈 내려받기<span>→</span></a>
+      <a href="#">영문 표기법<span>→</span></a>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="sec-head"><div class="lab">고객센터</div><h2>원하는 품목이 없으면<br>바로 물어보세요</h2></div>
-    <div class="cs">
-      <div class="call"><div class="lab">전화 상담</div><div class="num">02&#8209;2275&#8209;8822</div><p>팩스 02&#8209;2274&#8209;8974</p></div>
-      <div class="list">
-        <a href="#"><h3>온라인 견적 문의</h3><p>규격이나 수량이 특별하면 남겨 주세요<br>따로 계산해서 알려 드려요</p></a>
-        <a href="#"><h3>원고 올리기</h3><p>주문한 뒤에 파일을 따로 보낼 때</p></a>
-        <a href="#"><h3>자주 묻는 질문</h3><p>파일 형식, 교정, 배송 일정</p></a>
-      </div>
-    </div>
+<!-- ⑧ 4가지 약속 -->
+<section class="promise-sec">
+  <div class="wrap promise">
+    <h2>투데이프린팅의<br>4가지 약속</h2>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><b>최저가 보장</b><span>좋은 품질을 낮은 값에</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><b>품질 보장</b><span>자체 품질 관리로 전 제품 확인</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><b>친절 상담</b><span>주문부터 납품까지 직접 안내</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><b>납기 보장</b><span>약속한 날짜에 출고</span></li>
+    </ul>
+    <div class="escrow"><b>NHN KCP 에스크로 가입</b><span>현금 결제도 구매 안전 서비스로 보호받아요</span></div>
   </div>
 </section>
 </main>
@@ -187,9 +241,11 @@
   </div>
 </footer>
 
-<nav class="draft" aria-label="시안 화면 이동"><span>시안</span><a href="index.html" aria-current="page">메인</a><a href="detail.html" >책자 상세</a></nav>
+<nav class="draft" aria-label="시안 화면 이동"><span>시안</span><a href="index.html" aria-current="page">메인</a><a href="product.html?c=namecard">품목 상세</a><a href="detail.html">책자 상세</a></nav>
 
+<script src="js/products.js"></script>
 <script src="js/site.js"></script>
+<script src="js/main.js"></script>
 <script>
 /* 정본: 메뉴·가격 규칙·주문 현황은 여기 한 곳에서 */
 /* 시안용 임시 가격 — 제로원 방식(장당 단가 + 수량 구간 할인 + 기본료) */
@@ -239,7 +295,6 @@ function build(){
   $('fOpt').innerHTML = P.opts.map((o,i)=>`<button aria-pressed="false" data-o="${i}">${o[0]}</button>`).join('');
   $('fOpt').querySelectorAll('button').forEach(b=>b.onclick=()=>{const i=+b.dataset.o;state.opts.has(i)?state.opts.delete(i):state.opts.add(i);b.setAttribute('aria-pressed',state.opts.has(i));calc()});
   $('fSize').onchange=$('fPaper').onchange=calc;
-  $('moreLink').hidden = cur!=='책자';
   calc();
 }
 let shown = 0, raf;
@@ -262,7 +317,7 @@ function animate(to){
   clearTimeout(animate.t); animate.t=setTimeout(()=>{cancelAnimationFrame(raf);shown=to;el.innerHTML=won(to)+'<small>원</small>'},dur+80);
 }
 $('addCart').onclick=()=>{const n=$('cartN');n.textContent=+n.textContent+1;n.animate([{transform:'scale(1.5)'},{transform:'scale(1)'}],{duration:300})};
-$('orderBtn').onclick=()=>{if(cur==='책자')location.href='detail.html'};
+$('orderBtn').onclick=()=>{location.href={'명함':'product.html?c=namecard','전단지':'product.html?c=flyer','리플렛':'product.html?c=leaflet','책자':'detail.html'}[cur]};
 build();
 
 /* 주문 현황 — 두 번 이어 붙여 끊김 없이 돎 */

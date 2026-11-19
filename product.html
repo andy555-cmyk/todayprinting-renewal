@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>품목 주문 | 투데이프린팅 시안</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/detail.css">
+<link rel="stylesheet" href="css/product.css">
+</head>
+<body>
+<div class="util">
+  <div class="wrap">
+    <span class="tel">견적 상담 <b>02&#8209;2275&#8209;8822</b></span>
+    <nav>
+      <a href="#">원고 올리기</a><a href="#">교정 보기</a><a href="#">온라인 견적 문의</a><a href="#">고객센터</a>
+    </nav>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="투데이프린팅 처음으로">
+      <svg width="40" height="30" viewBox="0 0 40 30" aria-hidden="true">
+        <g transform="skewX(-28)">
+          <rect x="16" y="0" width="22" height="6" rx="1.5" fill="#14161a"/>
+          <rect x="12" y="8" width="22" height="6" rx="1.5" fill="#00a0e3"/>
+          <rect x="16" y="16" width="22" height="6" rx="1.5" fill="#ffd600"/>
+          <rect x="20" y="24" width="22" height="6" rx="1.5" fill="#e5007e"/>
+        </g>
+      </svg>
+      <b>투데이프린팅</b>
+    </a>
+    <ul class="gnb" id="gnb"></ul>
+    <div class="tools">
+      <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span class="txt">로그인</span></a>
+      <a href="#" class="cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.3"/><circle cx="18" cy="20.5" r="1.3"/></svg><span class="txt">장바구니</span><i id="cartN">0</i></a>
+      <button class="menu-btn" aria-label="전체 메뉴"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="crumb" aria-label="현재 위치"><a href="index.html">처음</a><span>›</span><b id="crumbName">품목</b></nav>
+
+  <div class="pd-head">
+    <div>
+      <h1 id="pName">품목</h1>
+      <p id="pDesc"></p>
+    </div>
+    <div class="facts" id="pFacts"></div>
+  </div>
+
+  <div class="pd">
+    <div class="opts" id="opts">
+      <section class="grp" style="padding-bottom:28px">
+        <h2><i>1</i>종류·수량</h2>
+        <div class="ofield"><span class="k" id="kType">종류</span><div class="chips" id="oType" role="group" aria-labelledby="kType"></div></div>
+        <div class="ofield" id="qtyRow"><label class="k" for="oQty">수량</label>
+          <div><span class="stepper"><button type="button" data-step="-1" aria-label="수량 줄이기">−</button><input id="oQty" inputmode="numeric" value="0" aria-describedby="qHint"><button type="button" data-step="1" aria-label="수량 늘리기">+</button></span><span class="hint" id="qHint"></span>
+          <div class="chips" id="qQuick" style="margin-top:10px"></div></div>
+        </div>
+      </section>
+      <section class="grp" id="gOpt"><h2><i>2</i>옵션</h2><div id="oFields"></div></section>
+      <section class="grp" id="gPost"><h2><i>3</i>후가공<small>필요할 때만</small></h2><div class="chips" id="oPost"></div></section>
+      <section class="grp" id="gQuote"><h2><i>2</i>견적 요청</h2>
+        <div class="qform">
+          <label>원하는 규격<input placeholder="예: 가로 320 × 세로 420 × 폭 110mm"></label>
+          <label>수량<input inputmode="numeric" placeholder="예: 1,000개"></label>
+          <label class="full">용지·손잡이·인쇄 등 바라는 점<textarea rows="4" placeholder="쓰고 계신 제품 사진을 같이 올려 주시면 가장 빨라요"></textarea></label>
+        </div>
+      </section>
+      <section class="grp" id="gDesign"><h2><i>4</i>디자인</h2><div class="design" id="oDesign"></div></section>
+      <section class="grp" style="border-bottom:0"><h2><i id="nFile">5</i>인쇄 파일</h2>
+        <label class="drop" id="drop">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="1.5" aria-hidden="true"><path d="M12 15V4M7 9l5-5 5 5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+          <div><b>파일을 여기에 끌어 놓거나 눌러서 고르세요</b><span>PDF·AI·JPG·ZIP · 큰 파일은 주문 뒤 원고 올리기로 보내도 됩니다</span></div>
+          <input type="file" id="file" multiple>
+        </label>
+        <ul class="files" id="files"></ul>
+        <label class="later"><input type="checkbox">파일은 주문한 뒤에 따로 올릴게요</label>
+      </section>
+    </div>
+
+    <aside class="side" aria-label="주문 요약">
+      <div class="mock photo"><img id="pImg" src="" alt=""><div class="lab" id="mockLab"></div></div>
+      <div class="sum">
+        <h3>금액 내역</h3>
+        <table><tbody id="lines"></tbody></table>
+        <div class="tot">
+          <div class="k">결제 예정 금액<b id="vat"></b></div>
+          <div class="price" id="price" aria-live="polite">0<small>원</small></div>
+        </div>
+        <div class="per" id="per"></div>
+        <div class="ship"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg><span id="ship"></span></div>
+        <div class="acts" id="acts">
+          <button class="btn line" id="estBtn" type="button">견적서 보기</button>
+          <button class="btn line" id="cartBtn" type="button">장바구니</button>
+          <button class="btn solid" type="button">바로 주문하기</button>
+        </div>
+        <p class="note" id="note">시안용 임시 가격입니다 · 실제 단가표를 받으면 바뀝니다</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<section class="info">
+  <div class="wrap">
+    <div class="itabs" role="tablist" id="itabs">
+      <button role="tab" aria-selected="true" data-p="p1">상품 안내</button>
+      <button role="tab" aria-selected="false" data-p="p2">파일 만드는 법</button>
+      <button role="tab" aria-selected="false" data-p="p3">교정·배송</button>
+    </div>
+    <div class="ipanel on" id="p1" role="tabpanel"><table id="infoT"></table></div>
+    <div class="ipanel" id="p2" role="tabpanel">
+      <div class="guide">
+        <div class="sheet">
+          <svg width="260" height="330" viewBox="0 0 260 330" aria-label="재단 여백 설명 그림"><rect x="10" y="10" width="240" height="310" fill="#fdecf5" stroke="#e5007e" stroke-dasharray="5 4"/><rect x="22" y="22" width="216" height="286" fill="#fff" stroke="#14161a"/><rect x="40" y="40" width="180" height="250" fill="none" stroke="#00a0e3" stroke-dasharray="3 3"/><text x="130" y="168" text-anchor="middle" font-size="17" fill="#3b3f47">글자는 파란 선 안쪽</text><text x="130" y="318" text-anchor="middle" font-size="15" fill="#b80065">바탕은 분홍 선까지</text></svg>
+        </div>
+        <ol>
+          <li>작업 크기보다 사방 1~3mm 크게 만들어 주세요(재단 여백)</li>
+          <li>글자와 로고는 재단선에서 3mm 이상 안쪽에</li>
+          <li>PDF로 저장할 때 글꼴을 포함하거나 윤곽선으로</li>
+          <li>사진은 300dpi, 색상은 CMYK</li>
+          <li>앞면과 뒷면은 쪽을 나눠 한 파일로</li>
+        </ol>
+      </div>
+    </div>
+    <div class="ipanel" id="p3" role="tabpanel">
+      <table>
+        <tr><th>교정</th><td>파일을 받으면 작업 시안을 교정 보기에 올려 드립니다. 확인 뒤 승인하시면 인쇄를 시작합니다</td></tr>
+        <tr><th>출고</th><td>승인한 날부터 계산합니다. 후가공이 있으면 하루 더 걸립니다</td></tr>
+        <tr><th>배송</th><td>택배 · 퀵 · 방문 수령(충무로)</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="others">
+  <div class="wrap">
+    <h2>다른 품목도 바로 견적</h2>
+    <div class="ogrid" id="others"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <span class="logo"><svg width="34" height="26" viewBox="0 0 40 30" aria-hidden="true"><g transform="skewX(-28)"><rect x="16" y="0" width="22" height="6" rx="1.5" fill="#fff"/><rect x="12" y="8" width="22" height="6" rx="1.5" fill="#00a0e3"/><rect x="16" y="16" width="22" height="6" rx="1.5" fill="#ffd600"/><rect x="20" y="24" width="22" height="6" rx="1.5" fill="#e5007e"/></g></svg><b>투데이프린팅</b></span>
+      <nav><a href="#">회사 소개</a><a href="#">이용약관</a><a href="#"><b>개인정보처리방침</b></a><a href="#">이용 안내</a></nav>
+    </div>
+    <dl>
+      <div><dt>상호</dt><dd>투데이프린팅</dd></div>
+      <div><dt>대표</dt><dd>이민종</dd></div>
+      <div><dt>주소</dt><dd>서울 중구 퇴계로 180&#8209;15, 302호(필동1가, 뉴동화빌딩)</dd></div>
+      <div><dt>사업자등록번호</dt><dd>295&#8209;21&#8209;00243</dd></div>
+      <div><dt>통신판매업</dt><dd>제 2016&#8209;서울중구&#8209;1692 호</dd></div>
+      <div><dt>전화</dt><dd>02&#8209;2275&#8209;8822</dd></div>
+      <div><dt>팩스</dt><dd>02&#8209;2274&#8209;8974</dd></div>
+    </dl>
+    <p class="copy">Copyright © 투데이프린팅. All rights reserved</p>
+  </div>
+</footer>
+
+<div class="mbar"><div><div class="k">합계</div><div class="p" id="mPrice">0원</div></div><button class="btn solid" type="button">주문하기</button></div>
+<div class="mbar-sp"></div>
+
+<div class="est" id="est" role="dialog" aria-modal="true" aria-labelledby="estT">
+  <div class="paper">
+    <h2 id="estT">견적서</h2>
+    <table id="estTable"></table>
+    <div class="acts"><button class="btn line" type="button" id="estClose">닫기</button><button class="btn solid" type="button" onclick="print()">인쇄·PDF 저장</button></div>
+  </div>
+</div>
+
+<nav class="draft" aria-label="시안 화면 이동"><span>시안</span><a href="index.html" >메인</a><a href="product.html?c=namecard" aria-current="page">품목 상세</a><a href="detail.html">책자 상세</a></nav>
+
+<script src="js/products.js"></script>
+<script src="js/site.js"></script>
+<script src="js/product.js"></script>
+</body>
+</html>
