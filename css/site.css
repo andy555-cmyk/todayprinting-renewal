@@ -327,8 +327,7 @@ footer .copy{margin-top:20px;color:#7d838c;font-size:18px}
 .drawer .tel{margin-top:20px;font-size:18px;color:var(--mute)}
 .drawer .tel b{display:block;font-size:26px;color:var(--ink)}
 @media (max-width:400px){.draft{font-size:16px}.draft span{padding:0 6px 0 8px}.draft a{padding:0 11px}}
-/* 넓은 모니터: 화면 전체를 비례로 키워 가운데만 몰리지 않게 */
-@media (min-width:1600px){html{zoom:1.12}}
-@media (min-width:1800px){html{zoom:1.25}}
-@media (min-width:2200px){html{zoom:1.4}}
-@media (min-width:2500px){html{zoom:1.6}}
+/* 넓은 모니터: 확대하지 않고 내용 폭만 넓혀 양옆이 비지 않게 */
+@media (min-width:1680px){:root{--wrap:1560px}}
+@media (min-width:2200px){:root{--wrap:1800px}}
+@media (min-width:2400px){:root{--wrap:1960px}}
