@@ -9,9 +9,9 @@
 .sum.quote .acts{grid-template-columns:1fr 1fr}
 .sum.quote .acts .btn{display:grid;place-items:center}
 .qform{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.qform label{display:flex;flex-direction:column;gap:8px;font-size:17px;font-weight:600;color:var(--ink2)}
+.qform label{display:flex;flex-direction:column;gap:8px;font-size:19px;font-weight:600;color:var(--ink2)}
 .qform .full{grid-column:1/-1}
-.qform input,.qform textarea{font:inherit;font-size:17px;font-weight:400;border:1px solid #cfd3d9;border-radius:10px;padding:12px 14px;min-height:48px;resize:vertical}
+.qform input,.qform textarea{font:inherit;font-size:19px;font-weight:400;border:1px solid #cfd3d9;border-radius:10px;padding:12px 14px;min-height:48px;resize:vertical}
 .qform input:focus,.qform textarea:focus{outline:2px solid var(--ink);outline-offset:1px}
 .others{padding:80px 0 96px}
 .others h2{font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:-.03em;margin-bottom:28px}
@@ -20,7 +20,7 @@
 .ogrid .ph{display:block;aspect-ratio:1;border-radius:14px;overflow:hidden;background:#eef0f3}
 .ogrid img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .ogrid a:hover img{transform:scale(1.05)}
-.ogrid b{display:block;font-size:17px;font-weight:600;margin-top:10px;word-break:keep-all}
+.ogrid b{display:block;font-size:19px;font-weight:600;margin-top:10px;word-break:keep-all}
 @media (max-width:1024px){.ogrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:768px){.qform{grid-template-columns:1fr}.ogrid{grid-template-columns:repeat(3,minmax(0,1fr))}.others{padding:56px 0 72px}}
 @media (max-width:400px){.ogrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
