@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>투데이프린팅 메인 시안</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <span class="tel">견적 상담 <b>02&#8209;2275&#8209;8822</b></span>
+    <nav>
+      <a href="#">원고 올리기</a><a href="#">교정 보기</a><a href="#">온라인 견적 문의</a><a href="#">고객센터</a>
+    </nav>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="투데이프린팅 처음으로">
+      <svg width="40" height="30" viewBox="0 0 40 30" aria-hidden="true">
+        <g transform="skewX(-28)">
+          <rect x="16" y="0" width="22" height="6" rx="1.5" fill="#14161a"/>
+          <rect x="12" y="8" width="22" height="6" rx="1.5" fill="#00a0e3"/>
+          <rect x="16" y="16" width="22" height="6" rx="1.5" fill="#ffd600"/>
+          <rect x="20" y="24" width="22" height="6" rx="1.5" fill="#e5007e"/>
+        </g>
+      </svg>
+      <b>투데이프린팅</b>
+    </a>
+    <ul class="gnb" id="gnb"></ul>
+    <div class="tools">
+      <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span class="txt">로그인</span></a>
+      <a href="#" class="cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.3"/><circle cx="18" cy="20.5" r="1.3"/></svg><span class="txt">장바구니</span><i id="cartN">0</i></a>
+      <button class="menu-btn" aria-label="전체 메뉴"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" style="padding:0">
+  <div class="bg"><img src="img/hero.jpg" alt="" fetchpriority="high" width="1254" height="1254"></div>
+  <div class="wrap">
+    <div class="copy">
+      <div class="kicker"><span class="cmyk"><i></i><i></i><i></i><i></i></span>충무로 인쇄 골목 온라인 인쇄소</div>
+      <h1>고르면 바로 나오는<br><em>인쇄 견적</em></h1>
+      <p class="lead">규격·용지·수량만 고르면 가격이 바로 나오고<br>파일 올리기부터 카드 결제까지 한 화면에서 끝납니다</p>
+      <div class="quick">
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>원고 올리기</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v12H4zM9 21h6"/><path d="M8 11l2.5 2.5L16 8"/></svg>교정 보기</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v14H8l-4 3z"/></svg>별도 견적 문의</a>
+      </div>
+    </div>
+
+    <div class="calc crop" id="calc" aria-labelledby="calcT">
+      <span class="mk tl"></span><span class="mk tr"></span><span class="mk bl"></span><span class="mk br"></span>
+      <div class="head"><h2 id="calcT">바로 견적</h2><span>부가세 포함</span></div>
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div class="field"><label for="fSize">규격</label><select id="fSize"></select></div>
+      <div class="field"><label for="fPaper">용지</label><select id="fPaper"></select></div>
+      <div class="field"><span class="lab" id="qLab">수량</span><div class="chips" id="fQty" role="group" aria-labelledby="qLab"></div></div>
+      <div class="field"><span class="lab" id="oLab">후가공</span><div class="chips" id="fOpt" role="group" aria-labelledby="oLab"></div></div>
+      <div class="total">
+        <div><div class="lab">결제 예정 금액</div><div class="sub" id="vat"></div></div>
+        <div class="price" id="price" aria-live="polite">0<small>원</small></div>
+      </div>
+      <div class="acts">
+        <button class="btn line" id="addCart">장바구니</button>
+        <button class="btn solid">바로 주문하기</button>
+      </div>
+      <p class="note">시안용 임시 가격입니다 · 실제 단가표를 받으면 바뀝니다</p>
+    </div>
+  </div>
+</section>
+
+<section id="items">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lab">인쇄 품목</div>
+      <h2>자주 찾는 인쇄물부터<br>바로 고르세요</h2>
+    </div>
+    <div class="bento">
+      <a class="tile t1" href="#"><img src="img/namecard.jpg" alt="" loading="lazy" width="1254" height="1254"><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span><div class="cap"><b>명함</b><span>일반·고급·수입지·카드 명함</span></div></a>
+      <a class="tile t2" href="#"><img src="img/leaflet.jpg" alt="" loading="lazy" width="1254" height="1254"><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span><div class="cap"><b>리플렛·브로셔</b><span>접지·계단식·병풍</span></div></a>
+      <a class="tile t3" href="detail.html"><img src="img/booklet.jpg" alt="" loading="lazy" width="1254" height="1254"><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span><div class="cap"><b>책자·교재</b><span>자동 견적 주문</span></div></a>
+      <a class="tile t4" href="#"><img src="img/note.jpg" alt="" loading="lazy" width="1254" height="1254"><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span><div class="cap"><b>노트·포스트잇</b><span>홍보용 노트, 수첩</span></div></a>
+      <a class="tile t5 plain" href="#"><div class="cap"><b>전단지·포스터</b><span style="color:var(--mute)">문어발·문고리</span></div><ul><li>A1 일반옵셋</li><li>A2 일반옵셋</li><li>2절</li><li>4절</li></ul></a>
+    </div>
+    <div class="more-cats">
+      <a href="#">카다로그</a><a href="#">봉투</a><a href="#">화일</a><a href="#">상장·상장케이스</a><a href="#">티슈</a><a href="#">쇼핑백·칼라박스</a><a href="#">학원 인쇄물</a>
+    </div>
+  </div>
+</section>
+
+<section class="steps-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lab">주문 순서</div>
+      <h2>네 단계면 인쇄가 시작됩니다</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="dot">1</div><h3>옵션 고르기</h3><p>규격·용지·수량을 고르면<br>가격이 바로 나와요</p></div>
+      <div class="step"><div class="dot">2</div><h3>파일 올리기</h3><p>주문할 때 바로 올리거나<br>나중에 원고 올리기로</p><a href="#">원고 올리기 →</a></div>
+      <div class="step"><div class="dot">3</div><h3>교정 확인</h3><p>작업한 시안을 보고<br>수정 요청이나 승인</p><a href="#">교정 보기 →</a></div>
+      <div class="step"><div class="dot">4</div><h3>인쇄·배송</h3><p>진행 상태를 주문 내역에서<br>바로 확인할 수 있어요</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div class="photo"><img src="img/booklet.jpg" alt="" loading="lazy" width="1254" height="1254"></div>
+    <div class="txt">
+      <div class="sec-head" style="text-align:left;margin:0"><div class="lab">학원 인쇄물</div></div>
+      <h2>학원에서 쓰는 인쇄물<br>한곳에 모았습니다</h2>
+      <p>원장님이 매달 찾는 양식은 따로 고를 필요 없이 바로 주문하세요</p>
+      <div class="acad">
+        <a href="#">수강영수증<span>→</span></a><a href="#">학생관리기록부<span>→</span></a>
+        <a href="#">입학원서<span>→</span></a><a href="#">출제용지<span>→</span></a>
+        <a href="#">원고지<span>→</span></a><a href="#">상품권<span>→</span></a>
+        <a href="#">수강료봉투<span>→</span></a><a href="#">책받침<span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="live">
+  <div class="wrap live-box">
+    <div class="txt">
+      <div class="pulse"><i></i>실시간 주문 현황</div>
+      <h2>지금도 인쇄기가<br>돌아가고 있어요</h2>
+      <p>내 주문이 어디쯤인지는 주문 내역에서 확인할 수 있어요</p>
+    </div>
+    <div class="ticker" aria-label="최근 주문 현황"><ul id="ticker"></ul></div>
+  </div>
+</div>
+
+<section class="pano" style="padding:0">
+  <img src="img/press.jpg" alt="" width="1254" height="1254">
+  <div class="wrap">
+    <h2>서울 충무로 인쇄 골목<br>필동에 있는 인쇄소입니다</h2>
+    <p>인쇄소가 모인 골목 한가운데, 뉴동화빌딩 3층에서 주문을 받고 있어요</p>
+    <div class="facts">
+      <div><b>2016년</b><span>온라인 주문 시작</span></div>
+      <div><b>100가지 넘게</b><span>바로 주문하는 품목</span></div>
+      <div><b>충무로역</b><span>가까운 필동 골목</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><div class="lab">고객센터</div><h2>원하는 품목이 없으면<br>바로 물어보세요</h2></div>
+    <div class="cs">
+      <div class="call"><div class="lab">전화 상담</div><div class="num">02&#8209;2275&#8209;8822</div><p>팩스 02&#8209;2274&#8209;8974</p></div>
+      <div class="list">
+        <a href="#"><h3>온라인 견적 문의</h3><p>규격이나 수량이 특별하면 남겨 주세요<br>따로 계산해서 알려 드려요</p></a>
+        <a href="#"><h3>원고 올리기</h3><p>주문한 뒤에 파일을 따로 보낼 때</p></a>
+        <a href="#"><h3>자주 묻는 질문</h3><p>파일 형식, 교정, 배송 일정</p></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <span class="logo"><svg width="34" height="26" viewBox="0 0 40 30" aria-hidden="true"><g transform="skewX(-28)"><rect x="16" y="0" width="22" height="6" rx="1.5" fill="#fff"/><rect x="12" y="8" width="22" height="6" rx="1.5" fill="#00a0e3"/><rect x="16" y="16" width="22" height="6" rx="1.5" fill="#ffd600"/><rect x="20" y="24" width="22" height="6" rx="1.5" fill="#e5007e"/></g></svg><b>투데이프린팅</b></span>
+      <nav><a href="#">회사 소개</a><a href="#">이용약관</a><a href="#"><b>개인정보처리방침</b></a><a href="#">이용 안내</a></nav>
+    </div>
+    <dl>
+      <div><dt>상호</dt><dd>투데이프린팅</dd></div>
+      <div><dt>대표</dt><dd>이민종</dd></div>
+      <div><dt>주소</dt><dd>서울 중구 퇴계로 180&#8209;15, 302호(필동1가, 뉴동화빌딩)</dd></div>
+      <div><dt>사업자등록번호</dt><dd>295&#8209;21&#8209;00243</dd></div>
+      <div><dt>통신판매업</dt><dd>제 2016&#8209;서울중구&#8209;1692 호</dd></div>
+      <div><dt>전화</dt><dd>02&#8209;2275&#8209;8822</dd></div>
+      <div><dt>팩스</dt><dd>02&#8209;2274&#8209;8974</dd></div>
+    </dl>
+    <p class="copy">Copyright © 투데이프린팅. All rights reserved</p>
+  </div>
+</footer>
+
+<div class="draft">메인 화면 시안 · 1차</div>
+
+<script src="js/site.js"></script>
+<script>
+/* 정본: 메뉴·가격 규칙·주문 현황은 여기 한 곳에서 */
+/* 시안용 임시 가격 — 제로원 방식(장당 단가 + 수량 구간 할인 + 기본료) */
+const PRICE = {
+  "명함":{sizes:[["90×50mm",1],["86×52mm",1],["90×55mm",1.05]],
+          papers:[["스노우 250g",1],["누브지 240g",1.6],["반누보 250g",1.8],["아르떼 230g",1.7]],
+          qty:[200,500,1000,2000], unit:28, base:6000, disc:{500:10,1000:22,2000:30},
+          opts:[["양면 인쇄",0.6],["무광 코팅",0.25],["귀도리",0.15]]},
+  "전단지":{sizes:[["A4",1],["B5(16절)",0.85],["A3",1.9]],
+          papers:[["아트지 100g",1],["아트지 150g",1.3],["모조지 100g",0.95]],
+          qty:[1000,2000,4000,8000], unit:22, base:9000, disc:{2000:18,4000:32,8000:45},
+          opts:[["양면 인쇄",0.5],["접지",0.12]]},
+  "리플렛":{sizes:[["A4 3단접지",1],["B5 3단접지",0.85],["A4 2단접지",0.9]],
+          papers:[["아트지 150g",1],["스노우 180g",1.15],["모조지 150g",1.05]],
+          qty:[500,1000,2000,4000], unit:95, base:15000, disc:{1000:15,2000:28,4000:40},
+          opts:[["무광 코팅",0.2],["오시",0.08]]},
+  "책자":{sizes:[["A4",1],["B5",0.82],["A5",0.6]],
+          papers:[["모조 80g 내지",1],["모조 100g 내지",1.18],["아트 120g 내지",1.4]],
+          qty:[50,100,300,500], unit:1900, base:30000, disc:{100:8,300:18,500:26},
+          opts:[["표지 코팅",0.06],["날개 표지",0.1]]},
+};
+
+const ORDERS = [
+  [22686,"파작******","별도견적","2026/11/17",1],[22685,"신우******","별도견적","2026/11/16",2],
+  [22684,"씨엔******","별도견적","2026/11/13",1],[22683,"채경******","별도견적","2026/11/13",3],
+  [22682,"정석******","별도견적","2026/11/13",4],[22681,"이재******","별도견적","2026/11/13",1],
+  [22680,"해송******","별도견적","2026/11/13",1],[22679,"아크******","별도견적","2026/11/12",1],
+  [22677,"박건******","별도견적","2026/11/12",1],[22676,"김지******","A5 전단지(옵셋)","2026/11/11",1],
+  [22674,"남주******","일반명함","2026/11/09",1],[22670,"엘에******","고급지명함","2026/11/05",1],
+  [22669,"박형******","편지봉투(일반)","2026/11/05",1],
+];
+const ST = {1:"배송 완료",2:"인쇄 중",3:"입금 대기",4:"입금 완료"};
+
+/* 바로 견적 */
+const won = n => n.toLocaleString('ko-KR');
+const $ = id => document.getElementById(id);
+let cur = "명함", state = {};
+function build(){
+  const P = PRICE[cur];
+  $('tabs').innerHTML = Object.keys(PRICE).map(k=>`<button role="tab" aria-selected="${k===cur}">${k}</button>`).join('');
+  $('tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{cur=b.textContent;build()});
+  $('fSize').innerHTML = P.sizes.map((s,i)=>`<option value="${i}">${s[0]}</option>`).join('');
+  $('fPaper').innerHTML = P.papers.map((s,i)=>`<option value="${i}">${s[0]}</option>`).join('');
+  state = {qty:P.qty[1], opts:new Set()};
+  $('fQty').innerHTML = P.qty.map(q=>`<button aria-pressed="${q===state.qty}" data-q="${q}">${won(q)}${cur==='책자'?'부':'매'}</button>`).join('');
+  $('fQty').querySelectorAll('button').forEach(b=>b.onclick=()=>{state.qty=+b.dataset.q;$('fQty').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));calc()});
+  $('fOpt').innerHTML = P.opts.map((o,i)=>`<button aria-pressed="false" data-o="${i}">${o[0]}</button>`).join('');
+  $('fOpt').querySelectorAll('button').forEach(b=>b.onclick=()=>{const i=+b.dataset.o;state.opts.has(i)?state.opts.delete(i):state.opts.add(i);b.setAttribute('aria-pressed',state.opts.has(i));calc()});
+  $('fSize').onchange=$('fPaper').onchange=calc;
+  calc();
+}
+let shown = 0, raf;
+function calc(){
+  const P = PRICE[cur];
+  const k = P.sizes[$('fSize').value][1]*P.papers[$('fPaper').value][1];
+  let unit = P.unit*k; state.opts.forEach(i=>unit+=P.unit*P.opts[i][1]);
+  const d = Object.keys(P.disc).filter(q=>state.qty>=+q).reduce((a,q)=>P.disc[q],0);
+  const supply = Math.round((P.base + (unit-unit*d/100)*state.qty)/100)*100;
+  const total = Math.round(supply*1.1/10)*10;
+  $('vat').innerHTML = `공급가 ${won(supply)}원<br>부가세 ${won(total-supply)}원` + (d?`<br>수량 할인 ${d}%&nbsp;적용`:'');
+  animate(total);
+}
+function animate(to){
+  cancelAnimationFrame(raf);
+  const el=$('price'), from=shown, t0=performance.now(), dur=document.documentElement.classList.contains('motion-off')?0:450;
+  el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump');
+  const step=t=>{const p=dur?Math.min(1,(t-t0)/dur):1, e=1-Math.pow(1-p,3);shown=Math.round(from+(to-from)*e);el.innerHTML=won(shown)+'<small>원</small>';if(p<1)raf=requestAnimationFrame(step)};
+  raf=requestAnimationFrame(step);
+  clearTimeout(animate.t); animate.t=setTimeout(()=>{cancelAnimationFrame(raf);shown=to;el.innerHTML=won(to)+'<small>원</small>'},dur+80);
+}
+$('addCart').onclick=()=>{const n=$('cartN');n.textContent=+n.textContent+1;n.animate([{transform:'scale(1.5)'},{transform:'scale(1)'}],{duration:300})};
+build();
+
+/* 주문 현황 — 두 번 이어 붙여 끊김 없이 돎 */
+const rows = ORDERS.map(o=>`<li><span class="no">${o[0]}</span><span class="nm">${o[1]}</span><span class="it">${o[2]}</span><span class="dt">${o[3]}</span><span class="st s${o[4]}">${ST[o[4]]}</span></li>`).join('');
+$('ticker').innerHTML = rows + rows;
+
+</script>
+</body>
+</html>

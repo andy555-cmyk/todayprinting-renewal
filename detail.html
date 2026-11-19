@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>책자·교재 자동 견적 | 투데이프린팅 시안</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/detail.css">
+</head>
+<body>
+<div class="util">
+  <div class="wrap">
+    <span class="tel">견적 상담 <b>02&#8209;2275&#8209;8822</b></span>
+    <nav>
+      <a href="#">원고 올리기</a><a href="#">교정 보기</a><a href="#">온라인 견적 문의</a><a href="#">고객센터</a>
+    </nav>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="투데이프린팅 처음으로">
+      <svg width="40" height="30" viewBox="0 0 40 30" aria-hidden="true">
+        <g transform="skewX(-28)">
+          <rect x="16" y="0" width="22" height="6" rx="1.5" fill="#14161a"/>
+          <rect x="12" y="8" width="22" height="6" rx="1.5" fill="#00a0e3"/>
+          <rect x="16" y="16" width="22" height="6" rx="1.5" fill="#ffd600"/>
+          <rect x="20" y="24" width="22" height="6" rx="1.5" fill="#e5007e"/>
+        </g>
+      </svg>
+      <b>투데이프린팅</b>
+    </a>
+    <ul class="gnb" id="gnb"></ul>
+    <div class="tools">
+      <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span class="txt">로그인</span></a>
+      <a href="#" class="cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.3"/><circle cx="18" cy="20.5" r="1.3"/></svg><span class="txt">장바구니</span><i id="cartN">0</i></a>
+      <button class="menu-btn" aria-label="전체 메뉴"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="crumb" aria-label="현재 위치"><a href="index.html">처음</a><span>›</span><a href="#">책자·교재</a><span>›</span><b>책자 자동 견적</b></nav>
+
+  <div class="pd-head">
+    <div>
+      <h1>책자·교재 자동 견적</h1>
+      <p>표지·내지·제본을 고르면 금액이 항목별로 바로 계산됩니다</p>
+    </div>
+    <div class="facts">
+      <div><b>최소 10부</b><span>주문 수량</span></div>
+      <div><b>4쪽 단위</b><span>내지 페이지</span></div>
+      <div><b id="hShip">5영업일</b><span>예상 출고</span></div>
+    </div>
+  </div>
+
+  <div class="pd">
+    <div class="opts" id="opts">
+
+      <section class="grp" style="padding-bottom:28px">
+        <h2><i>1</i>기본 사항</h2>
+        <div class="ofield"><span class="k" id="kSize">규격</span><div class="chips" id="oSize" role="group" aria-labelledby="kSize"></div></div>
+        <div class="ofield"><label class="k" for="oQty">부수</label>
+          <div><span class="stepper"><button type="button" data-step="-10" aria-label="10부 줄이기">−</button><input id="oQty" inputmode="numeric" value="100" aria-describedby="qHint"><button type="button" data-step="10" aria-label="10부 늘리기">+</button></span><span class="hint" id="qHint">10부 단위</span>
+          <div class="chips" id="qQuick" style="margin-top:10px"></div></div>
+        </div>
+      </section>
+
+      <section class="grp">
+        <h2><i>2</i>표지<small>겉면 1장</small></h2>
+        <div class="ofield"><span class="k" id="kCP">용지</span><div class="sel3" role="group" aria-labelledby="kCP"><select id="cKind" aria-label="표지 용지 종류"></select><select id="cPaper" aria-label="표지 용지"></select><select id="cGsm" aria-label="표지 평량"></select></div></div>
+        <div class="ofield"><label class="k" for="cPrint">인쇄</label><select id="cPrint"></select></div>
+        <div class="ofield"><span class="k" id="kCoat">코팅</span><div class="chips" id="cCoat" role="group" aria-labelledby="kCoat"></div></div>
+        <div class="ofield"><span class="k" id="kWing">날개</span><div class="chips" id="cWing" role="group" aria-labelledby="kWing"></div></div>
+      </section>
+
+      <section class="grp">
+        <h2><i>3</i>내지<small>안쪽 페이지</small></h2>
+        <div class="ofield"><span class="k" id="kIP">용지</span><div class="sel3" role="group" aria-labelledby="kIP"><select id="iKind" aria-label="내지 용지 종류"></select><select id="iPaper" aria-label="내지 용지"></select><select id="iGsm" aria-label="내지 평량"></select></div></div>
+        <div class="ofield"><label class="k" for="iPrint">인쇄</label><select id="iPrint"></select></div>
+        <div class="ofield"><label class="k" for="oPages">페이지</label>
+          <div><span class="stepper"><button type="button" data-pstep="-4" aria-label="4쪽 줄이기">−</button><input id="oPages" inputmode="numeric" value="96"><button type="button" data-pstep="4" aria-label="4쪽 늘리기">+</button></span><span class="hint">표지 빼고 4쪽 단위</span></div>
+        </div>
+      </section>
+
+      <section class="grp">
+        <h2><i>4</i>제본·면지</h2>
+        <div class="ofield"><span class="k" id="kBind">제본</span><div class="chips" id="oBind" role="group" aria-labelledby="kBind"></div></div>
+        <div class="ofield"><span class="k" id="kEnd">면지</span><div class="chips" id="oEnd" role="group" aria-labelledby="kEnd"></div></div>
+        <p class="warn" id="bindWarn" role="status"></p>
+      </section>
+
+      <section class="grp">
+        <h2><i>5</i>후가공<small>필요할 때만</small></h2>
+        <div class="ofield"><span class="k" id="kFoil">박</span><div class="chips" id="oFoil" role="group" aria-labelledby="kFoil"></div></div>
+        <div class="ofield"><span class="k" id="kEtc">기타</span><div class="chips" id="oEtc" role="group" aria-labelledby="kEtc"></div></div>
+      </section>
+
+      <section class="grp">
+        <h2><i>6</i>디자인</h2>
+        <div class="design" id="oDesign"></div>
+      </section>
+
+      <section class="grp" style="border-bottom:0">
+        <h2><i>7</i>인쇄 파일</h2>
+        <label class="drop" id="drop">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="1.5" aria-hidden="true"><path d="M12 15V4M7 9l5-5 5 5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+          <div><b>파일을 여기에 끌어 놓거나 눌러서 고르세요</b><span>PDF·AI·ZIP · 큰 파일은 주문 뒤 원고 올리기로 보내도 됩니다</span></div>
+          <input type="file" id="file" multiple>
+        </label>
+        <ul class="files" id="files"></ul>
+        <label class="later"><input type="checkbox" id="later">파일은 주문한 뒤에 따로 올릴게요</label>
+      </section>
+    </div>
+
+    <aside class="side" aria-label="주문 요약">
+      <div class="mock" aria-hidden="true">
+        <div class="book" id="book"><div class="pages"></div><div class="spine"></div><div class="flap"></div><div class="front"><div class="art"></div><div class="gloss"></div></div><div class="coil"></div><span class="staple" style="top:28%"></span><span class="staple" style="top:66%"></span></div>
+        <div class="lab" id="mockLab"></div>
+      </div>
+      <div class="sum">
+        <h3>금액 내역</h3>
+        <table><tbody id="lines"></tbody></table>
+        <div class="tot">
+          <div class="k">결제 예정 금액<b id="vat"></b></div>
+          <div class="price" id="price" aria-live="polite">0<small>원</small></div>
+        </div>
+        <div class="per" id="per"></div>
+        <div class="ship"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg><span id="ship"></span></div>
+        <div class="acts">
+          <button class="btn line" id="estBtn" type="button">견적서 보기</button>
+          <button class="btn line" id="cartBtn" type="button">장바구니</button>
+          <button class="btn solid" type="button">바로 주문하기</button>
+        </div>
+        <p class="note">시안용 임시 가격입니다 · 실제 단가표를 받으면 바뀝니다</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<section class="info" style="padding-top:72px">
+  <div class="wrap">
+    <div class="itabs" role="tablist" id="itabs">
+      <button role="tab" aria-selected="true" data-p="p1">상품 안내</button>
+      <button role="tab" aria-selected="false" data-p="p2">파일 만드는 법</button>
+      <button role="tab" aria-selected="false" data-p="p3">교정·배송</button>
+    </div>
+    <div class="ipanel on" id="p1" role="tabpanel">
+      <table>
+        <tr><th>규격</th><td>A4 · B5 · A5 · 크라운판 · B6, 그 밖의 규격은 별도 견적</td></tr>
+        <tr><th>제본</th><td>무선제본 32쪽 이상 · 중철제본 64쪽 이하(4쪽 단위) · 스프링제본은 투명 PVC 커버 포함</td></tr>
+        <tr><th>주문 수량</th><td>10부부터, 많이 주문할수록 한 부 값이 내려갑니다</td></tr>
+        <tr><th>자주 쓰는 곳</th><td>학원 교재, 문제집, 사업 보고서, 회사 소개서, 동문회 책자</td></tr>
+      </table>
+    </div>
+    <div class="ipanel" id="p2" role="tabpanel">
+      <div class="guide">
+        <div class="sheet">
+          <svg width="260" height="330" viewBox="0 0 260 330" aria-label="재단 여백 설명 그림"><rect x="10" y="10" width="240" height="310" fill="#fdecf5" stroke="#e5007e" stroke-dasharray="5 4"/><rect x="22" y="22" width="216" height="286" fill="#fff" stroke="#14161a"/><rect x="40" y="40" width="180" height="250" fill="none" stroke="#00a0e3" stroke-dasharray="3 3"/><text x="130" y="168" text-anchor="middle" font-size="15" fill="#3b3f47">글자는 파란 선 안쪽</text><text x="130" y="318" text-anchor="middle" font-size="13" fill="#b80065">바탕은 분홍 선까지</text></svg>
+        </div>
+        <ol>
+          <li>판형보다 사방 3mm 크게 만들어 주세요(재단 여백)</li>
+          <li>글자와 로고는 재단선에서 5mm 이상 안쪽에</li>
+          <li>PDF로 저장할 때 글꼴을 포함하거나 윤곽선으로</li>
+          <li>사진은 300dpi, 색상은 CMYK</li>
+          <li>표지와 내지는 파일을 따로 주세요</li>
+        </ol>
+      </div>
+    </div>
+    <div class="ipanel" id="p3" role="tabpanel">
+      <table>
+        <tr><th>교정</th><td>파일을 받으면 작업 시안을 교정 보기에 올려 드립니다. 확인 뒤 승인하시면 인쇄를 시작합니다</td></tr>
+        <tr><th>출고</th><td>승인한 날부터 계산합니다. 후가공이 있으면 하루에서 이틀 더 걸립니다</td></tr>
+        <tr><th>배송</th><td>택배 · 퀵 · 방문 수령(충무로)</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <span class="logo"><svg width="34" height="26" viewBox="0 0 40 30" aria-hidden="true"><g transform="skewX(-28)"><rect x="16" y="0" width="22" height="6" rx="1.5" fill="#fff"/><rect x="12" y="8" width="22" height="6" rx="1.5" fill="#00a0e3"/><rect x="16" y="16" width="22" height="6" rx="1.5" fill="#ffd600"/><rect x="20" y="24" width="22" height="6" rx="1.5" fill="#e5007e"/></g></svg><b>투데이프린팅</b></span>
+      <nav><a href="#">회사 소개</a><a href="#">이용약관</a><a href="#"><b>개인정보처리방침</b></a><a href="#">이용 안내</a></nav>
+    </div>
+    <dl>
+      <div><dt>상호</dt><dd>투데이프린팅</dd></div>
+      <div><dt>대표</dt><dd>이민종</dd></div>
+      <div><dt>주소</dt><dd>서울 중구 퇴계로 180&#8209;15, 302호(필동1가, 뉴동화빌딩)</dd></div>
+      <div><dt>사업자등록번호</dt><dd>295&#8209;21&#8209;00243</dd></div>
+      <div><dt>통신판매업</dt><dd>제 2016&#8209;서울중구&#8209;1692 호</dd></div>
+      <div><dt>전화</dt><dd>02&#8209;2275&#8209;8822</dd></div>
+      <div><dt>팩스</dt><dd>02&#8209;2274&#8209;8974</dd></div>
+    </dl>
+    <p class="copy">Copyright © 투데이프린팅. All rights reserved</p>
+  </div>
+</footer>
+
+<div class="mbar"><div><div class="k">결제 예정 금액</div><div class="p" id="mPrice">0원</div></div><button class="btn solid" type="button">주문하기</button></div>
+<div class="mbar-sp"></div>
+
+<div class="est" id="est" role="dialog" aria-modal="true" aria-labelledby="estT">
+  <div class="paper">
+    <h2 id="estT">견적서</h2>
+    <table id="estTable"></table>
+    <div class="acts"><button class="btn line" type="button" id="estClose">닫기</button><button class="btn solid" type="button" onclick="print()">인쇄·PDF 저장</button></div>
+  </div>
+</div>
+
+<div class="draft">책자 상세 화면 시안 · 1차</div>
+
+<script src="js/site.js"></script>
+<script>
+/* ───── 가격 규칙 정본 (시안용 임시 단가) ─────
+   계산 방식은 제로원과 같은 공식형: 항목가 = 기본료 + (부당 단가 − 할인) × 부수
+   실제 단가표를 받으면 이 표만 바꾸면 된다 */
+const RULE = {
+  sizes:[ // 이름, 가로, 세로, 판형 계수
+    ["A4",210,297,1],["B5",188,257,.82],["A5",148,210,.55],["크라운판",176,248,.74],["B6",127,188,.42]],
+  papers:{ // 종류 → 용지 → [평량, 쪽당 단가(A4·단면 기준)]
+    "일반용지":{"모조지":[[80,6],[100,7.5],[120,9]],"아트지":[[100,8],[120,9.5],[150,12],[180,14]],"스노우지":[[120,10],[150,12.5],[180,15],[250,21]]},
+    "고급용지":{"랑데뷰":[[130,16],[160,19],[210,26]],"몽블랑":[[130,15],[160,18],[190,22]],"아르떼":[[130,16],[160,19],[190,23]]},
+    "색지":{"매직칼라":[[120,14],[180,19]]},
+    "펄지":{"스타드림":[[120,24],[240,40]]},
+    "특수지":{"크라프트":[[120,13],[180,17]]}},
+  prints:[["양면 칼라(8도)",4],["단면 칼라(4도)",2.2],["양면 1도",1.3],["단면 1도",.75],["인쇄 없음",0]],
+  coat:[["코팅 없음",0],["무광",110],["유광",95]],          // 부당
+  wing:[["없음",0],["있음",160]],
+  bind:[["무선",450,15000],["중철",180,8000],["스프링",1100,15000]], // 부당, 기본료
+  endp:[["없음",0],["앞뒤 1장씩",120],["앞뒤 2장씩",240]],
+  foil:[["없음",0,0],["금박",60,55000],["은박",60,55000],["먹박",50,50000]],
+  etc:[["오시",40,10000],["에폭시",90,40000]],
+  design:[["파일 그대로",0,"완성 파일을 올려 주세요"],["간단 편집",22000,"글자·사진 교체 수준"],["표지 디자인",88000,"표지를 새로 만들어 드려요"]],
+  disc:[[50,3],[100,6],[200,10],[300,14],[500,18],[1000,25],[2000,30]], // 부수 이상이면 %
+  base:{cover:12000,inner:18000},
+  ship:{base:5,foil:2,big:1}
+};
+
+const $=id=>document.getElementById(id), won=n=>Math.round(n).toLocaleString('ko-KR');
+const S={size:0,qty:100,cKind:"일반용지",cPaper:"스노우지",cGsm:250,cPrint:1,coat:1,wing:0,iKind:"일반용지",iPaper:"모조지",iGsm:80,iPrint:3,pages:96,bind:0,endp:0,foil:0,etc:new Set(),design:0};
+
+function chips(el,list,key,label=x=>x[0]){
+  el.innerHTML=list.map((x,i)=>`<button type="button" aria-pressed="${S[key]===i}" data-i="${i}">${label(x)}</button>`).join('');
+  el.onclick=e=>{const b=e.target.closest('button');if(!b||b.disabled)return;S[key]=+b.dataset.i;el.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));calc()};
+}
+function paperSel(p){ // 종류 → 용지 → 평량 3단
+  const K=$(p+'Kind'),P=$(p+'Paper'),G=$(p+'Gsm'),T=RULE.papers;
+  K.innerHTML=Object.keys(T).map(k=>`<option ${k===S[p+'Kind']?'selected':''}>${k}</option>`).join('');
+  const fillP=()=>{const ps=Object.keys(T[S[p+'Kind']]);if(!ps.includes(S[p+'Paper']))S[p+'Paper']=ps[0];P.innerHTML=ps.map(x=>`<option ${x===S[p+'Paper']?'selected':''}>${x}</option>`).join('');fillG()};
+  const fillG=()=>{const gs=T[S[p+'Kind']][S[p+'Paper']].map(g=>g[0]);if(!gs.includes(S[p+'Gsm']))S[p+'Gsm']=gs[0];G.innerHTML=gs.map(g=>`<option value="${g}" ${g===S[p+'Gsm']?'selected':''}>${g}g</option>`).join('')};
+  K.onchange=()=>{S[p+'Kind']=K.value;fillP();calc()};P.onchange=()=>{S[p+'Paper']=P.value;fillG();calc()};G.onchange=()=>{S[p+'Gsm']=+G.value;calc()};
+  fillP();
+}
+function printSel(id,key){const el=$(id);el.innerHTML=RULE.prints.map((x,i)=>`<option value="${i}" ${S[key]===i?'selected':''}>${x[0]}</option>`).join('');el.onchange=()=>{S[key]=+el.value;calc()}}
+
+chips($('oSize'),RULE.sizes,'size',x=>`${x[0]} <span style="font-weight:500;opacity:.7">${x[1]}×${x[2]}</span>`);
+$('qQuick').innerHTML=[50,100,300,500,1000].map(q=>`<button type="button" data-q="${q}" aria-pressed="false">${won(q)}부</button>`).join('');
+$('qQuick').onclick=e=>{const b=e.target.closest('button');if(b){S.qty=+b.dataset.q;calc()}};
+document.querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{S.qty=Math.max(10,S.qty+ +b.dataset.step);calc()});
+$('oQty').onchange=()=>{S.qty=Math.max(10,Math.round((+$('oQty').value.replace(/\D/g,'')||10)/10)*10);calc()};
+document.querySelectorAll('[data-pstep]').forEach(b=>b.onclick=()=>{S.pages=Math.max(8,S.pages+ +b.dataset.pstep);calc()});
+$('oPages').onchange=()=>{S.pages=Math.max(8,Math.round((+$('oPages').value.replace(/\D/g,'')||8)/4)*4);calc()};
+paperSel('c');paperSel('i');printSel('cPrint','cPrint');printSel('iPrint','iPrint');
+chips($('cCoat'),RULE.coat,'coat');chips($('cWing'),RULE.wing,'wing');
+chips($('oBind'),RULE.bind,'bind',x=>x[0]+'제본');chips($('oEnd'),RULE.endp,'endp');chips($('oFoil'),RULE.foil,'foil');
+$('oEtc').innerHTML=RULE.etc.map((x,i)=>`<button type="button" aria-pressed="false" data-i="${i}">${x[0]}</button>`).join('');
+$('oEtc').onclick=e=>{const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i;S.etc.has(i)?S.etc.delete(i):S.etc.add(i);b.setAttribute('aria-pressed',S.etc.has(i));calc()};
+$('oDesign').innerHTML=RULE.design.map((d,i)=>`<label><input type="radio" name="design" value="${i}" ${i===0?'checked':''}><b>${d[0]}</b><span>${d[2]}</span><em>${d[1]?won(d[1])+'원':'추가 금액 없음'}</em></label>`).join('');
+$('oDesign').onchange=e=>{S.design=+e.target.value;calc()};
+
+const unitOf=(p)=>RULE.papers[S[p+'Kind']][S[p+'Paper']].find(g=>g[0]===S[p+'Gsm'])[1];
+const discOf=q=>RULE.disc.filter(d=>q>=d[0]).reduce((a,d)=>d[1],0);
+
+function calc(){
+  const Z=RULE.sizes[S.size], q=S.qty, d=discOf(q);
+  // 제본 규칙
+  const warn=[];
+  if(S.bind===1&&(S.pages>64)){warn.push('중철제본은 64쪽까지만 됩니다. 페이지를 줄이거나 무선제본을 골라 주세요');}
+  if(S.bind===0&&S.pages<32){warn.push('무선제본은 32쪽부터 됩니다. 얇은 책은 중철제본이 알맞아요');}
+  if(S.wing&&S.bind===2){warn.push('스프링제본에는 날개를 넣을 수 없어 날개 금액을 빼고 계산했어요');}
+  $('bindWarn').textContent=warn.join(' · ');$('bindWarn').classList.toggle('on',!!warn.length);
+  const ok=!(S.bind===1&&S.pages>64)&&!(S.bind===0&&S.pages<32);
+
+  const item=(base,unit)=>base+(unit-unit*d/100)*q;
+  const cU=unitOf('c')*Z[3]*RULE.prints[S.cPrint][1]*2.2 + RULE.coat[S.coat][1] + (S.bind===2?0:RULE.wing[S.wing][1]);
+  const iU=unitOf('i')*Z[3]*RULE.prints[S.iPrint][1]*S.pages/2 + (RULE.prints[S.iPrint][1]===0?unitOf('i')*Z[3]*S.pages/4:0);
+  const B=RULE.bind[S.bind];
+  const L=[
+    ['표지',`${S.cPaper} ${S.cGsm}g · ${RULE.prints[S.cPrint][0]} · 코팅 ${RULE.coat[S.coat][0]}${S.wing&&S.bind!==2?' · 날개':''}`,item(RULE.base.cover,cU)],
+    ['내지',`${S.iPaper} ${S.iGsm}g · ${RULE.prints[S.iPrint][0]} · ${S.pages}쪽`,item(RULE.base.inner,iU)],
+    ['제본',`${B[0]}제본${S.endp?' · 면지 '+RULE.endp[S.endp][0]:''}`,item(B[2],B[1]+RULE.endp[S.endp][1])],
+  ];
+  if(S.foil){const f=RULE.foil[S.foil];L.push(['후가공',f[0],item(f[2],f[1])])}
+  S.etc.forEach(i=>{const f=RULE.etc[i];L.push(['후가공',f[0],item(f[2],f[1])])});
+  if(S.design){const g=RULE.design[S.design];L.push(['디자인',g[0],g[1]])}
+  const supply=Math.round(L.reduce((a,l)=>a+l[2],0)/100)*100, total=Math.round(supply*1.1/10)*10;
+
+  $('lines').innerHTML=L.map(l=>`<tr><td>${l[0]}<small>${l[1]}</small></td><td>${won(Math.round(l[2]/100)*100)}원</td></tr>`).join('')
+    +(d?`<tr class="disc"><td>수량 할인</td><td>${won(q)}부 · ${d}%&nbsp;적용됨</td></tr>`:'');
+  $('vat').textContent=`공급가 ${won(supply)} + 부가세 ${won(total-supply)}`;
+  $('per').textContent=`한 부에 약 ${won(Math.round(total/q/10)*10)}원`;
+  const days=RULE.ship.base+(S.foil||S.etc.size?RULE.ship.foil:0)+(q>=1000?RULE.ship.big:0);
+  $('ship').textContent=`교정 승인 뒤 약 ${days}영업일에 출고`;$('hShip').textContent=days+'영업일';
+  animate(ok?total:0);
+  $('mPrice').textContent=ok?won(total)+'원':'옵션 확인';
+  // 입력칸 동기화
+  $('oQty').value=won(q);$('oPages').value=S.pages;
+  $('qQuick').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.q===q));
+  $('oBind').querySelectorAll('button').forEach((b,i)=>{b.disabled=false});
+  $('cWing').querySelectorAll('button').forEach(b=>b.disabled=S.bind===2);
+  mock(Z);
+  window.__est={L,supply,total,d,q};
+}
+let shown=0,raf;
+function animate(to){
+  cancelAnimationFrame(raf);const el=$('price'),from=shown,t0=performance.now(),dur=document.documentElement.classList.contains('motion-off')?0:450;
+  const draw=v=>el.innerHTML=won(v)+'<small>원</small>';
+  if(!to){el.innerHTML='옵션 확인';shown=0;return}
+  const step=t=>{const p=dur?Math.min(1,(t-t0)/dur):1,e=1-Math.pow(1-p,3);shown=Math.round(from+(to-from)*e);draw(shown);if(p<1)raf=requestAnimationFrame(step)};
+  raf=requestAnimationFrame(step);clearTimeout(animate.t);animate.t=setTimeout(()=>{cancelAnimationFrame(raf);shown=to;draw(to)},dur+80);
+}
+/* 책 모형: 규격 비율·두께·제본·코팅·날개를 그대로 보여 줌 */
+function mock(Z){
+  const box=$('book'),maxH=window.innerWidth<1024?170:210,h=maxH*Math.min(1,Z[2]/297+.15),w=h*Z[1]/Z[2];
+  const mm=(S.pages/2)*(S.iGsm/1000)*1.1+(S.cGsm/1000)*2*1.1; // 대략 두께
+  const t=Math.max(2,Math.min(26,mm*h/Z[2]));
+  box.style.width=w+'px';box.style.height=h+'px';box.style.setProperty('--t',t/2+'px');box.style.setProperty('--t2',t+'px');
+  box.classList.toggle('glossy',S.coat===2);box.classList.toggle('matte',S.coat===1);
+  box.classList.toggle('wing',!!S.wing&&S.bind!==2);box.classList.toggle('spring',S.bind===2);box.classList.toggle('saddle',S.bind===1);
+  $('mockLab').textContent=`${Z[0]} ${Z[1]}×${Z[2]}mm · ${S.pages+4}쪽 · 두께\u00a0약\u00a0${Math.max(1,Math.round(mm))}mm`;
+}
+
+/* 파일 */
+const fileIn=$('file'),drop=$('drop');
+const showFiles=fs=>{$('files').innerHTML=[...fs].map(f=>`<li><span>${f.name}</span><span>${(f.size/1048576).toFixed(1)}MB</span></li>`).join('')};
+fileIn.onchange=()=>showFiles(fileIn.files);
+['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over')}));
+['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over')}));
+drop.addEventListener('drop',e=>showFiles(e.dataTransfer.files));
+
+/* 견적서 */
+$('estBtn').onclick=()=>{const E=window.__est,today=new Date().toLocaleDateString('ko-KR');
+  $('estTable').innerHTML=`<tr><th>견적일</th><td>${today}</td></tr><tr><th>품목</th><td>책자 ${RULE.sizes[S.size][0]} · ${won(E.q)}부</td></tr>`
+   +E.L.map(l=>`<tr><th>${l[0]}</th><td>${l[1]} · ${won(Math.round(l[2]/100)*100)}원</td></tr>`).join('')
+   +(E.d?`<tr><th>수량 할인</th><td>${E.d}% 적용</td></tr>`:'')
+   +`<tr><th>공급가</th><td>${won(E.supply)}원</td></tr><tr><th>부가세</th><td>${won(E.total-E.supply)}원</td></tr><tr><th>합계</th><td><b>${won(E.total)}원</b></td></tr><tr><th>공급자</th><td>투데이프린팅 · 295&#8209;21&#8209;00243 · 02&#8209;2275&#8209;8822</td></tr>`;
+  $('est').classList.add('on');$('estClose').focus()};
+$('estClose').onclick=()=>$('est').classList.remove('on');
+$('est').onclick=e=>{if(e.target.id==='est')$('est').classList.remove('on')};
+addEventListener('keydown',e=>{if(e.key==='Escape')$('est').classList.remove('on')});
+$('cartBtn').onclick=()=>{const n=$('cartN');n.textContent=+n.textContent+1;n.animate([{transform:'scale(1.5)'},{transform:'scale(1)'}],{duration:300})};
+
+/* 안내 탭 */
+$('itabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;$('itabs').querySelectorAll('button').forEach(x=>x.setAttribute('aria-selected',x===b));document.querySelectorAll('.ipanel').forEach(p=>p.classList.toggle('on',p.id===b.dataset.p))};
+addEventListener('resize',()=>mock(RULE.sizes[S.size]));
+calc();
+</script>
+</body>
+</html>
