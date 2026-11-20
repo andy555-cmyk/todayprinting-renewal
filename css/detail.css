@@ -134,7 +134,7 @@
   .side{display:contents}
   .mock{order:-1}
   .sum{order:2;margin-top:0}
-  .mock{height:240px}
+  .mock{height:240px;align-self:stretch;width:100%}
   .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px -12px rgba(0,0,0,.2);padding:12px 20px calc(12px + env(safe-area-inset-bottom));align-items:center;justify-content:space-between;gap:12px}
   .mbar .k{font-size:18px;color:var(--mute)}
   .mbar .p{font-size:26px;font-weight:800;letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums}
